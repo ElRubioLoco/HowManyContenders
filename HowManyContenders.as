@@ -9,7 +9,7 @@ void Main(){
     while(true){
 
         //if we're on a new map, the timer is over or a new pb has been made we update the times
-        if(refreshPosition){
+        if(refreshContenders){
             if(CanRefresh()){
                 mapid = network.ClientManiaAppPlayground.Playground.Map.MapInfo.MapUid;
                 if(MapHasNadeoLeaderboard(mapid)){
@@ -21,7 +21,7 @@ void Main(){
                 }
             }
             
-            refreshPosition = false;
+            refreshContenders = false;
         }
         yield();
 

@@ -13,7 +13,13 @@ bool startupEnded = false;
 int counterTries = 0;
 int maxTries = 10;
 bool failedRefresh = false;
-bool refreshPosition = false;
+
+string currentMapUid = "";
+
+float timer = 0;
+float updateFrequency = refreshTimer*60*1000; // = minutes * One minute in sec * 1000 milliseconds per second
+bool refreshContenders = false;
+
 
 
 const array<string> invalidGamemodes = {

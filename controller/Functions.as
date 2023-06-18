@@ -15,7 +15,6 @@ int getSpecificTimePosition(int64 time) {
         }
         
         Json::Value info = FetchEndpoint(NadeoServices::BaseURL() + "/api/token/leaderboard/group/Personal_Best/map/" + mapid + "/surround/0/0?score=" + time + "&onlyWorld=true");
-        print("Hello");
         if (info.GetType() != Json::Type::Null) {
             Json::Value tops = info["tops"];
             if (tops.GetType() == Json::Type::Array) {
@@ -107,7 +106,37 @@ bool UserCanUseThePlugin(){
 void ForceRefresh(){
     failedRefresh = false;
     counterTries = 0;
-    if(!refreshPosition){
-            refreshPosition = true;
+    if(!refreshContenders){
+            refreshContenders = true;
     }
+}
+
+// Todo : optimize refresh time
+void Update(float dt) {
+
+    if(timerStartDelay > 0){
+        timerStartDelay -= dt;
+        if(!startupEnded){
+            return;
+        }
+    }
+
+    auto app = cast<CTrackMania>(GetApp());
+    auto network = cast<CTrackManiaNetwork>(app.Network);
+    
+    //check if we're in a map
+    if(app.CurrentPlayground !is null && network.ClientManiaAppPlayground !is null && network.ClientManiaAppPlayground.Playground !is null && network.ClientManiaAppPlayground.Playground.Map !is null){
+        if(currentMapUid != app.RootMap.MapInfo.MapUid) {
+            print("New map !");
+            refreshContenders = true;
+            currentMapUid = app.RootMap.MapInfo.MapUid;
+        }
+        
+
+        //get the user id
+        if(network.ClientManiaAppPlayground.UserMgr.Users.Length != 0){
+            auto userId = network.ClientManiaAppPlayground.UserMgr.Users[0].Id;
+        }
+    }
+
 }
