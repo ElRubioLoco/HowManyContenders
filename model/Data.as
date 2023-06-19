@@ -2,7 +2,7 @@ const string pluginName = "How many contenders ?";
 
 bool validMap = false;
 
-int contendersCount = 0;
+int worldContendersCount = 0;
 
 string mapid = "";
 

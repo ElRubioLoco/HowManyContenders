@@ -1,7 +1,7 @@
 int64 maxint = 9223372036854775806;
 
 
-int getContendersCount() {
+int getWorldContendersCount() {
     return getSpecificTimePosition(maxint);
 }
 
@@ -13,7 +13,6 @@ int getSpecificTimePosition(int64 time) {
         if (!mapidIsValid(mapid)) {
             mapid = network.ClientManiaAppPlayground.Playground.Map.MapInfo.MapUid;
         }
-        
         Json::Value info = FetchEndpoint(NadeoServices::BaseURL() + "/api/token/leaderboard/group/Personal_Best/map/" + mapid + "/surround/0/0?score=" + time + "&onlyWorld=true");
         if (info.GetType() != Json::Type::Null) {
             Json::Value tops = info["tops"];

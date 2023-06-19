@@ -85,7 +85,7 @@ void RenderWindows(){
 
         UI::EndGroup();
         UI::BeginGroup();
-        UI::Text("World : "+contendersCount);
+        UI::Text("World : "+worldContendersCount);
 
         UI::EndGroup();
 
