@@ -85,7 +85,9 @@ void RenderWindows(){
 
         UI::EndGroup();
         UI::BeginGroup();
-        UI::Text("World : "+worldContendersCount);
+        for(int i = contenders.zoneContenders.Length-1; i>=0; i--) {
+            UI::Text(contenders.zoneNames[i]+" : "+contenders.zoneContenders[i]);
+        }
 
         UI::EndGroup();
 

@@ -1,31 +1,8 @@
 int64 maxint = 9223372036854775806;
 
-
-int getWorldContendersCount() {
-    return getSpecificTimePosition(maxint);
-}
-
-int getSpecificTimePosition(int64 time) {
-    auto app = cast<CTrackMania>(GetApp());
-    auto network = cast<CTrackManiaNetwork>(app.Network);
-    
-    if (network.ClientManiaAppPlayground !is null && network.ClientManiaAppPlayground.Playground !is null && network.ClientManiaAppPlayground.Playground.Map !is null) {
-        if (!mapidIsValid(mapid)) {
-            mapid = network.ClientManiaAppPlayground.Playground.Map.MapInfo.MapUid;
-        }
-        Json::Value info = FetchEndpoint(NadeoServices::BaseURL() + "/api/token/leaderboard/group/Personal_Best/map/" + mapid + "/surround/0/0?score=" + time + "&onlyWorld=true");
-        if (info.GetType() != Json::Type::Null) {
-            Json::Value tops = info["tops"];
-            if (tops.GetType() == Json::Type::Array) {
-                Json::Value top = tops[0]["top"];
-                if (top.Length > 0) {
-                    return top[0]["position"];
-                }
-            }
-        }
-    }
-
-    return -1;
+string getZoneName(string zoneId) {
+    //Todo : implement.
+    return zoneId;
 }
 
 void waitForAuthentication() {
@@ -110,15 +87,7 @@ void ForceRefresh(){
     }
 }
 
-// Todo : optimize refresh time
 void Update(float dt) {
-
-    if(timerStartDelay > 0){
-        timerStartDelay -= dt;
-        if(!startupEnded){
-            return;
-        }
-    }
 
     auto app = cast<CTrackMania>(GetApp());
     auto network = cast<CTrackManiaNetwork>(app.Network);
@@ -128,14 +97,32 @@ void Update(float dt) {
         if(currentMapUid != app.RootMap.MapInfo.MapUid) {
             print("New map !");
             refreshContenders = true;
-            currentMapUid = app.RootMap.MapInfo.MapUid;
-        }
+            currentMapUid = app.RootMap.MapInfo.MapUid; 
         
-
-        //get the user id
-        if(network.ClientManiaAppPlayground.UserMgr.Users.Length != 0){
-            auto userId = network.ClientManiaAppPlayground.UserMgr.Users[0].Id;
+            //get the user id
+            
         }
     }
+}
 
+CTrackManiaPlayerInfo@ getPlayerInfos() {
+    return cast<CTrackManiaNetwork>(cast<CTrackMania>(GetApp()).Network).PlayerInfo;
+}
+
+array<string> splitString(const string& in str, const string& in delimiter) {
+    array<string> result;
+    
+    int startPos = 0;
+    int endPos = str.findFirst(delimiter);
+    
+    while (endPos != -1)
+    {
+        result.insertLast(str.substr(startPos, endPos - startPos));
+        startPos = endPos + delimiter.Length;
+        endPos = str.find(delimiter, startPos);
+    }
+    
+    result.insertLast(str.substr(startPos));
+    
+    return result;
 }

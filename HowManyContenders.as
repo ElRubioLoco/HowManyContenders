@@ -14,10 +14,10 @@ void Main(){
                 mapid = network.ClientManiaAppPlayground.Playground.Map.MapInfo.MapUid;
                 if(MapHasNadeoLeaderboard(mapid)){
                     validMap = true;
-                    worldContendersCount = getWorldContendersCount();
+                    contenders.updateValues();
                 }else{
                     validMap = false;
-                    worldContendersCount = 0;
+                    contenders.resetContendersCount();
                 }
             }
             

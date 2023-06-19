@@ -2,8 +2,6 @@ const string pluginName = "How many contenders ?";
 
 bool validMap = false;
 
-int worldContendersCount = 0;
-
 string mapid = "";
 
 float timerStartDelay = 30 *1000; // 30 seconds
@@ -14,16 +12,24 @@ int counterTries = 0;
 int maxTries = 10;
 bool failedRefresh = false;
 
+ContendersCount@ contenders = ContendersCount();
+
 string currentMapUid = "";
 
 float timer = 0;
 float updateFrequency = refreshTimer*60*1000; // = minutes * One minute in sec * 1000 milliseconds per second
 bool refreshContenders = false;
 
-
+const CTrackManiaPlayerInfo@ playerInfo = cast<CTrackManiaNetwork>(cast<CTrackMania>(GetApp()).Network).PlayerInfo;
 
 const array<string> invalidGamemodes = {
     "TM_Royal_Online",
     "TM_RoyalTimeAttack_Online",
     "TM_RoyalValidation_Local"
 };
+
+const int WORLDINDEX = 4;
+const int CONTINENTINDEX = 3;
+const int COUNTRYINDEX = 2;
+const int REGIONINDEX = 1;
+const int DISTRICTINDEX = 0;
