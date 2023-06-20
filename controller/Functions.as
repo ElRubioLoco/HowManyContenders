@@ -1,10 +1,5 @@
 int64 maxint = 9223372036854775806;
 
-string getZoneName(string zoneId) {
-    //Todo : implement.
-    return zoneId;
-}
-
 void waitForAuthentication() {
 
     if (!UserCanUseThePlugin()) {
@@ -66,6 +61,18 @@ Json::Value FetchEndpoint(const string &in route) {
     return Json::Parse(req.String());
 }
 
+Json::Value PostRequest(const string &in route, const string &in requestBody) {
+    while (!NadeoServices::IsAuthenticated("NadeoLiveServices")) {
+        yield();
+    }
+    auto req = NadeoServices::Post("NadeoLiveServices", route, requestBody);
+    req.Start();
+    while(!req.Finished()) {
+        yield();
+    }
+    return Json::Parse(req.String());
+}
+
 /**
  * Check if the user can use the plugin or not, based on different conditions
  */
@@ -107,22 +114,4 @@ void Update(float dt) {
 
 CTrackManiaPlayerInfo@ getPlayerInfos() {
     return cast<CTrackManiaNetwork>(cast<CTrackMania>(GetApp()).Network).PlayerInfo;
-}
-
-array<string> splitString(const string& in str, const string& in delimiter) {
-    array<string> result;
-    
-    int startPos = 0;
-    int endPos = str.Find(delimiter);
-    
-    while (endPos != -1)
-    {
-        result.InsertLast(str.substr(startPos, endPos - startPos));
-        startPos = endPos + delimiter.Length;
-        endPos = str.Find(delimiter, startPos);
-    }
-    
-    result.InsertLast(str.substr(startPos));
-    
-    return result;
 }

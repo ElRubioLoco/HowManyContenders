@@ -23,7 +23,7 @@ class ContendersCount{
 
     void updateUserZones() {
         string zonePath = getPlayerInfos().ZonePath;
-        zoneNames = splitString(zonePath,'|');
+        zoneNames = zonePath.Split('|');
     }
 
     void updateContendersCount() {
@@ -35,10 +35,15 @@ class ContendersCount{
                 mapid = network.ClientManiaAppPlayground.Playground.Map.MapInfo.MapUid;
             }
 
-            Json::Value data = FetchEndpoint(NadeoServices::BaseURL() + "/api/token/leaderboard/group/map?scores["+mapid+"]="+maxint);
+            string requestBody = '{"maps": [{"mapUid": "'+mapid+'","groupUid": "Personal_Best"}]}';
+
+            Json::Value data = PostRequest(NadeoServices::BaseURL() + "/api/token/leaderboard/group/map?scores["+mapid+"]="+maxint, requestBody);
             if (data.GetType() != Json::Type::Null) {
-                Json::Value zones = data["zones"];
+                Json::Value zones = data[0]["zones"];
+                 
                 if (zones.GetType() == Json::Type::Array){    
+                    // Never goes there.
+                    print(zones.Length);
                     for (uint i=0; i<zones.Length; i++) {
                         zoneContenders[i] = zones[i]["ranking"]["position"];
                     }
