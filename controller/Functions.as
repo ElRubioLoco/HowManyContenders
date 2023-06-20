@@ -113,16 +113,16 @@ array<string> splitString(const string& in str, const string& in delimiter) {
     array<string> result;
     
     int startPos = 0;
-    int endPos = str.findFirst(delimiter);
+    int endPos = str.Find(delimiter);
     
     while (endPos != -1)
     {
-        result.insertLast(str.substr(startPos, endPos - startPos));
+        result.InsertLast(str.substr(startPos, endPos - startPos));
         startPos = endPos + delimiter.Length;
-        endPos = str.find(delimiter, startPos);
+        endPos = str.Find(delimiter, startPos);
     }
     
-    result.insertLast(str.substr(startPos));
+    result.InsertLast(str.substr(startPos));
     
     return result;
 }
