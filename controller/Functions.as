@@ -1,5 +1,3 @@
-int64 maxint = 9223372036854775806;
-
 void waitForAuthentication() {
 
     if (!UserCanUseThePlugin()) {
