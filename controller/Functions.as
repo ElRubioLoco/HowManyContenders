@@ -32,7 +32,7 @@ void waitForAuthentication() {
 }
 
 bool MapHasNadeoLeaderboard(const string &in mapid) {
-    Json::Value info = FetchEndpoint(NadeoServices::BaseURL() + "/api/token/map/" + mapid);
+    Json::Value info = FetchEndpoint(NadeoServices::BaseURLLive() + "/api/token/map/" + mapid);
 
     return info.GetType() == Json::Type::Object;
 }
