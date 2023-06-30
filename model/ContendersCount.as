@@ -19,7 +19,6 @@ class ContendersCount{
     void updateValues() {
         updateUserZones();
         updateContendersCount();
-        
     }
 
     void updateUserZones() {
@@ -46,6 +45,9 @@ class ContendersCount{
                 if (zones.GetType() == Json::Type::Array){    
                     for (uint i=0; i<zones.Length; i++) {
                         zoneContenders[i] = zones[i]["ranking"]["position"];
+                        if (zonesContenders[i] < 10000) {
+                            zoneContenders[i] = zoneContenders[i] - 1;
+                        }
                     }
                 }
             }
