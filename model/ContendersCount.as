@@ -45,7 +45,7 @@ class ContendersCount{
                 if (zones.GetType() == Json::Type::Array){    
                     for (uint i=0; i<zones.Length; i++) {
                         zoneContenders[i] = zones[i]["ranking"]["position"];
-                        if (zonesContenders[i] < 10000) {
+                        if (zoneContenders[i] < 10000) {
                             zoneContenders[i] = zoneContenders[i] - 1;
                         }
                     }
