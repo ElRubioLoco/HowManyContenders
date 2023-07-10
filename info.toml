@@ -1,8 +1,8 @@
 [meta]
 name        = "How Many Contenders"
 author      = "Martin CORNU-MANSUY (ElRubioLocoo)"
-category    = "Testing"
-version     = "1.0"
+category    = "Race"
+version     = "1.1"
 
 [script]
 dependencies = [ "NadeoServices", "VehicleState" ]
