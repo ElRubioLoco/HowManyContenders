@@ -19,9 +19,8 @@ void Main(){
                     validMap = false;
                     contenders.resetContendersCount();
                 }
+                refreshContenders = false;
             }
-            
-            refreshContenders = false;
         }
         yield();
 

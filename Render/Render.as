@@ -57,7 +57,6 @@ void RenderInterface(){
 void RenderWindows(){
     auto app = cast<CTrackMania>(GetApp());
    
-    
     int windowFlags = UI::WindowFlags::NoTitleBar | UI::WindowFlags::NoCollapse | UI::WindowFlags::AlwaysAutoResize | UI::WindowFlags::NoDocking | UI::WindowFlags::NoFocusOnAppearing;
 
     if (!UI::IsOverlayShown()) {
@@ -85,9 +84,12 @@ void RenderWindows(){
 
         UI::EndGroup();
         UI::BeginGroup();
-        for(int i = contenders.zoneContenders.Length-1; i>=0; i--) {
-            UI::Text(contenders.zoneNames[i]+" : "+contenders.zoneContenders[i]);
+        if (contenders.zoneNames.Length > 0 && contenders.zoneContenders.Length > 0) {
+            for(uint i = 0; i<contenders.zoneNames.Length; i++) {
+                UI::Text(contenders.zoneNames[i]+" : "+contenders.zoneContenders[i]);
+            }
         }
+        
 
         UI::EndGroup();
 

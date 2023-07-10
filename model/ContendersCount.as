@@ -9,11 +9,11 @@ class ContendersCount{
 
     string zoneId = "";
     
-    array<string> zoneNames = {"World", "Unknown", "Unknown", "Unknown", "Unknown"};
-    array<uint> zoneContenders;
+    array<string> zoneNames;
+    array<uint> zoneContenders = {};
 
     void resetContendersCount() {
-        zoneContenders = {0, 0, 0, 0, 0};
+        zoneContenders = {};
     }
 
     void updateValues() {
@@ -42,12 +42,14 @@ class ContendersCount{
             if (data.GetType() != Json::Type::Null) {
                 Json::Value zones = data[0]["zones"];
                  
-                if (zones.GetType() == Json::Type::Array){    
+                if (zones.GetType() == Json::Type::Array){   
                     for (uint i=0; i<zones.Length; i++) {
-                        zoneContenders[i] = zones[i]["ranking"]["position"];
-                        if (zoneContenders[i] < 10000) {
-                            zoneContenders[i] = zoneContenders[i] - 1;
+                        
+                        int pos = zones[i]["ranking"]["position"];
+                        if (pos < 10000) {
+                            pos = pos - 1;
                         }
+                        zoneContenders.InsertLast(pos);
                     }
                 }
             }

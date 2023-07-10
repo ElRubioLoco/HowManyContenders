@@ -100,7 +100,6 @@ void Update(float dt) {
     //check if we're in a map
     if(app.CurrentPlayground !is null && network.ClientManiaAppPlayground !is null && network.ClientManiaAppPlayground.Playground !is null && network.ClientManiaAppPlayground.Playground.Map !is null){
         if(currentMapUid != app.RootMap.MapInfo.MapUid) {
-            print("New map !");
             refreshContenders = true;
             currentMapUid = app.RootMap.MapInfo.MapUid; 
         
