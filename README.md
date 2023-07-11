@@ -7,7 +7,8 @@ Fixed a bug that made the plugin unusable for users belonging to zones that has 
 
 ### 1.0
 Initial version, allowing to see the total count of players that have a time on the map currently played, separated by the zone you belong to.
-Note that there is an issue in Nadeo API that makes us unable to get the real total count when we arrive on a map that has already been played by the user (We consider that the map has been played from the point where the user has a time on it). 
+
+>**NB** : there is an issue in Nadeo API that makes us unable to get the real total count when we arrive on a map that has already been played by the user (We consider that the map has been played from the point where the user has a time on it). 
 ## Credits
 Many thanks to @Banalian (Lilian Pouvreau) for developping his plugin [ExtraLeaderboardPositions](https://github.com/Banalian/ExtraLeaderboardPositions) and letting people look at the source code. It has been very helpful for me and I would never be able to develop HowManyContenders without it.
 
