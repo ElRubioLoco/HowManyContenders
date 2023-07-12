@@ -1,5 +1,5 @@
 void RenderMenu() {
-    if(UI::BeginMenu(iconColor + icon + "\\$z" + " " + pluginName)) {
+    if(UI::BeginMenu(pluginMenuTitle)) {
         if(windowVisible) {
             if(UI::MenuItem("Hide")) {
                 windowVisible = false;
@@ -67,7 +67,7 @@ void RenderWindows(){
         UI::BeginGroup();
 
         if(showPluginName){
-            UI::Text(pluginName);
+            UI::Text(pluginMenuTitle);
         }
         
         if(showPluginName && showSeparator){
