@@ -2,7 +2,7 @@
 name        = "How Many Contenders"
 author      = "Martin CORNU-MANSUY (ElRubioLocoo)"
 category    = "Race"
-version     = "1.1"
+version     = "1.2"
 
 [script]
 dependencies = [ "NadeoServices", "VehicleState" ]
