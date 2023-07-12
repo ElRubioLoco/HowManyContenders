@@ -33,3 +33,6 @@ const int CONTINENTINDEX = 3;
 const int COUNTRYINDEX = 2;
 const int REGIONINDEX = 1;
 const int DISTRICTINDEX = 0;
+
+const string iconColor = "\\$d44";
+const string icon = Icons::Users;

@@ -1,5 +1,5 @@
 void RenderMenu() {
-    if(UI::BeginMenu(pluginName)) {
+    if(UI::BeginMenu(iconColor + icon + "\\$z" + " " + pluginName)) {
         if(windowVisible) {
             if(UI::MenuItem("Hide")) {
                 windowVisible = false;
@@ -20,7 +20,7 @@ void RenderMenu() {
 // ############################## WINDOW RENDER #############################
 
 void Render() {
-    
+
     if(displayMode == EnumDisplayMode::ALWAYS) {
         RenderWindows();
     } else if (UI::IsGameUIVisible() && displayMode == EnumDisplayMode::ALWAYS_EXCEPT_IF_HIDDEN_INTERFACE){
