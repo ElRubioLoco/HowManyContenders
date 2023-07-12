@@ -20,11 +20,7 @@ void RenderMenu() {
 // ############################## WINDOW RENDER #############################
 
 void Render() {
-
-    if(!UserCanUseThePlugin()){
-        return;
-    }
-
+    
     if(displayMode == EnumDisplayMode::ALWAYS) {
         RenderWindows();
     } else if (UI::IsGameUIVisible() && displayMode == EnumDisplayMode::ALWAYS_EXCEPT_IF_HIDDEN_INTERFACE){
@@ -44,10 +40,6 @@ void Render() {
 }
 
 void RenderInterface(){
-    if(!UserCanUseThePlugin()){
-        return;
-    }
-
     if(displayMode == EnumDisplayMode::ONLY_IF_OPENPLANET_MENU_IS_OPEN) {
         RenderWindows();
     }

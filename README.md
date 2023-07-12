@@ -2,6 +2,10 @@
 A Trackmania Next plugin, allowing to see the total number of players who played a map.So you can more precisely see where you are in terms of performance.
 
 ## Changelog
+
+### [1.2](https://github.com/ElRubioLoco/HowManyContenders/releases/tag/Stable_1.2)
+Opened plugin to starter access users.
+
 ### [1.1](https://github.com/ElRubioLoco/HowManyContenders/releases/tag/Stable_1.1)
 Fixed a bug that made the plugin unusable for users belonging to zones that has less than 5 divisions.
 
@@ -9,6 +13,7 @@ Fixed a bug that made the plugin unusable for users belonging to zones that has 
 Initial version, allowing to see the total count of players that have a time on the map currently played, separated by the zone you belong to.
 
 >**NB** : there is an issue in Nadeo API that makes us unable to get the real total count when we arrive on a map that has already been played by the user (We consider that the map has been played from the point where the user has a time on it). 
+
 ## Credits
 Many thanks to @Banalian (Lilian Pouvreau) for developping his plugin [ExtraLeaderboardPositions](https://github.com/Banalian/ExtraLeaderboardPositions) and letting people look at the source code. It has been very helpful for me and I would never be able to develop HowManyContenders without it.
 

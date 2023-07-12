@@ -1,8 +1,6 @@
 void Main(){
 #if TMNEXT
 
-    waitForAuthentication();
-
     auto app = cast<CTrackMania>(GetApp());
     auto network = cast<CTrackManiaNetwork>(app.Network);
 
