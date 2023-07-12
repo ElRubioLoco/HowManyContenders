@@ -5,6 +5,7 @@ A Trackmania Next plugin, allowing to see the total number of players who played
 
 ### [1.2](https://github.com/ElRubioLoco/HowManyContenders/releases/tag/Stable_1.2)
 Opened plugin to starter access users.
+Added an icon to the plugin to make it more aesthetic.
 
 ### [1.1](https://github.com/ElRubioLoco/HowManyContenders/releases/tag/Stable_1.1)
 Fixed a bug that made the plugin unusable for users belonging to zones that has less than 5 divisions.
