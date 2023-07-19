@@ -74,7 +74,6 @@ Json::Value PostRequest(const string &in route, const string &in requestBody) {
  * Check if the user can use the plugin or not, based on different conditions
  */
 bool UserCanUseThePlugin(){
-    print("yo");
     //Since this plugin request the leaderboard, we need to check if the user's current subscription has those permissions
     return (Permissions::ViewRecords());
 }
@@ -102,7 +101,7 @@ void Update(float dt) {
         if(currentMapUid != app.RootMap.MapInfo.MapUid) {
             refreshContenders = true;
             currentMapUid = app.RootMap.MapInfo.MapUid; 
-        
+            print("New map, refreshing HMC...");
             //get the user id
             
         }
