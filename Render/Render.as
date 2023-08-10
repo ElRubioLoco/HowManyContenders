@@ -66,16 +66,12 @@ void RenderWindows(){
 
         UI::BeginGroup();
 
-        if(showPluginName){
-            UI::Text(pluginMenuTitle);
-        }
-        
-        if(showPluginName && showSeparator){
-            UI::Separator();
-        }
+        UI::Text(pluginMenuTitle);
+        UI::Separator();
 
         UI::EndGroup();
         UI::BeginGroup();
+        
         if (contenders.zoneNames.Length > 0 && contenders.zoneContenders.Length > 0) {
             for(uint i = 0; i<contenders.zoneNames.Length; i++) {
                 UI::Text(contenders.zoneNames[i]+" : "+contenders.zoneContenders[i]);
